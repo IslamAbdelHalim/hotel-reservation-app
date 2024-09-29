@@ -1,0 +1,43 @@
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="checkIn" class="form-label">Check-In Date: </label>
+    <input type="Date" id="checkIn" formControlName="checkIn" class="form-control">
+    <div class="text-danger" *ngIf="reservationForm.get('checkIn')?.invalid && reservationForm.get('checkIn')?.touched">
+      Check-In Date is required
+    </div>
+  </div>
+
+  <div>
+    <label for="checkout" class="form-label">Check-out Date: </label>
+    <input type="Date" id="checkout" formControlName="checkOut" class="form-control">
+        <div class="text-danger" *ngIf="reservationForm.get('checkOut')?.invalid && reservationForm.get('checkOut')?.touched">
+          Check-out Date is required
+        </div>
+  </div>
+
+  <div>
+    <label for="guestName" class="form-label">Guest Name: </label>
+    <input type="text" id="guestName" formControlName="guestName" class="form-control">
+     <div class="text-danger" *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+          Guest Name is required
+    </div>
+  </div>
+
+  <div>
+    <label for="guestEmail" class="form-label">Guest Email: </label>
+    <input type="email" id="guestEmail" formControlName="guestEmail" class="form-control">
+    <div class="text-danger" *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
+          Guest Email is required
+    </div>
+  </div>
+
+  <div>
+    <label for="roomNum" class="form-label">Room Number: </label>
+    <input type="number" id="roomNum" formControlName="roomNumber" class="form-control">
+    <div class="text-danger" *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">Number Room is required</div>
+  </div>
+
+  <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
+
+</form>

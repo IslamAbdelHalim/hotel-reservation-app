@@ -1,0 +1,19 @@
+<h2 class="text-center">Reservation List</h2>
+
+<ul *ngIf="reservations.length; else noReservation">
+  <li *ngFor="let reservation of reservations">
+    Guest: {{reservation.guestName }} <br>
+    Email: {{reservation.guestEmail }} <br>
+    Room No: {{reservation.roomNumber }} <br>
+    Check-In: {{reservation.checkIn }} <br>
+    Check-Out: {{reservation.checkOut }} <br>
+  </li>
+</ul>
+
+<!-- <div *ngIf="!reservations.length">
+  <h2>There is no reservations</h2>
+</div> -->
+
+<ng-template #noReservation>
+  <p class="text-center">No Reservation On List</p>
+</ng-template>

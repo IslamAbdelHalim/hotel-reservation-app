@@ -7,7 +7,8 @@ import { ReservationListComponent } from './reservation-list/reservation-list.co
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'new', component: ReservationFromComponent},
-  {path: 'list', component: ReservationListComponent}
+  {path: 'list', component: ReservationListComponent},
+  {path: 'edit/:id', component: ReservationFromComponent}
 ];
 
 @NgModule({

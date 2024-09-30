@@ -35,8 +35,9 @@ export class ReservationFromComponent {
     // 2
     const id = this.activateRoute.snapshot.paramMap.get('id');
     if (id) {
-      const reservation = this.reservationService.getReservation(id);
-      if (reservation) this.reservationForm.patchValue(reservation);
+      this.reservationService.getReservation(id).subscribe((reservation) => {
+        this.reservationForm.patchValue(reservation);
+      })
       this.text = 'Update';
     }
   }

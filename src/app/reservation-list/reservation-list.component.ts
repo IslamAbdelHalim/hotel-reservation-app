@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../models/reservation';
 import { ReservationService } from '../reservation/services/reservation.service';
+import { consumerMarkDirty } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-reservation-list',
@@ -14,11 +15,14 @@ export class ReservationListComponent implements OnInit{
   constructor(private reservationService: ReservationService) {}
 
   ngOnInit() {
-    this.reservations = this.reservationService.getReservations();
+    this.reservationService.getReservations().subscribe((reservations) => this.reservations = reservations);
   }
 
   delete(id: string) {
-    this.reservationService.deleteReservation(id);
+    this.reservationService.deleteReservation(id).subscribe(() => {
+      const index = this.reservations.findIndex(re => re.id === id)
+      this.reservations.splice(index, 1);
+    })
   }
 
 }
